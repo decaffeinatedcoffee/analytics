@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#292a2d" >
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Visitante Dashboard</title>
+</head>
+<style>
+    body{
+        background-color: #191919;
+        padding: none;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    }
+    #lateral-bar{
+        height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  background-color: #090909;
+    }
+    #header{
+        width: 100%;
+        height: 100px;
+    }
+    #menuopener{
+        font-size:30px;
+        cursor:pointer;
+        color: white;
+        float: left;
+        margin-top: 20px;
+        margin-left: 40px;
+    }
+    #menucloser{
+  
+  top: 0;
+  right: 25px;
+  font-size: 26px;
+  margin-left: 50px;
+        cursor:pointer;
+        color: white;
+        position: absolute;
+    }
+    #lateral-bar p{
+color: white;
+font-size: 25px;
+text-align: center;
+display: block;
+padding: 10px 10px 10px 40px;
+cursor: pointer;
+    }
+    #user{
+        color: white;
+        display: flex;
+        align-items: center;
+        float: right;
+        margin-right: 10px;
+        margin-top: 2%;
+    }
+    #user img{
+        border-radius: 50%;
+        float: right;
+        width: 50px;
+        height: 50px;
+        margin-left: 10px;
+    }
+    #user span {
+       padding-left: 20px;
+       cursor: pointer;
+    }
+    .title{
+        font-size: 25px;
+        color: white;
+        text-align: center;
+       padding-top:60px;
+    }
+    #graphs{
+    display: flex;
+   justify-content: center;
+    }
+    #acessos p{
+       margin-top: 40%;
+    }
+    #acessos:hover{
+        background-color: #191919;
+    }
+    #retencao:hover{
+        background-color: #191919;
+    }
+
+    #graphs2{
+        display: flex;
+  justify-content: center;
+    }
+    #acessosp p{
+       margin-top: 40%;
+    }
+
+    #graphs3{
+        display: flex;
+  justify-content: center;
+    }
+    #retencao p{
+       margin-top: 40%;
+    }
+
+    @media (max-width: 1000px) {
+    #acessos{
+        color: white;
+        font-size: 4vw;
+        text-align: center;
+    }
+    #acessosp{
+        color: white;
+        font-size: 4vw;
+        text-align: center;
+    }
+    #retencao{
+        color: white;
+        font-size: 4vw;
+        text-align: center;
+    }
+    #acessos, #divp, #divs, #divl{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 30vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid rgb(255, 255, 255);
+    }
+    #acessosp, #divc, #dive, #divtp{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 30vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #retencao, #divv, #divct, #divh{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 30vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+}
+
+    @media (min-width: 1001px) and (max-width: 1400px) {
+    #acessos{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessosp{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #retencao{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessos, #divp, #divs, #divl{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 25vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #acessosp, #divc, #dive, #divtp{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 25vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #retencao, #divv, #divct, #divh{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 25vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+}
+@media (min-width: 1401px) and (max-width: 1619px) {
+    #acessos{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessosp{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #retencao{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessos, #divp, #divs, #divl{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 23vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #acessosp, #divc, #dive, #divtp{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 23vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #retencao, #divv, #divct, #divh{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 23vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+}
+@media (min-width: 1620px) and (max-width: 1799px) {
+    #acessos{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessosp{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #retencao{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessos, #divp, #divs, #divl{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 19vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #acessosp, #divc, #dive, #divtp{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 19vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #retencao, #divv, #divct, #divh{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 19vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+}
+@media (min-width: 1800px) and (max-width: 1999px) {
+    #acessos{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessosp{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #retencao{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessos, #divp, #divs, #divl{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 17vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #acessosp, #divc, #dive, #divtp{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 17vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+    #retencao, #divv, #divct, #divh{
+        z-index: 1;
+  overflow-x: hidden;
+  padding-top: 60px;
+        width: 300px;
+        height: 17vw;
+        display: inline-block;
+        background-color: #141414;
+        border: 0.01em solid white;
+    }
+}
+@media (min-width: 2000px) {
+    #acessos{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #acessosp{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+    #retencao{
+        color: white;
+        font-size: 2vw;
+        text-align: center;
+    }
+}
+#usersList img{
+width: 55px;
+height: 55px;
+border-radius: 50%;
+float: left;
+}
+
+#usersList p{
+    float: left;
+    margin-left: 2%;
+    text-overflow: ellipsis; 
+    display: block; 
+    overflow: hidden; 
+    white-space: nowrap;
+    width: 155px;
+    cursor: pointer;
+}
+#selectimg {
+		position: absolute;
+		top: 0; left: 0;
+		height: 100%;
+		width: 100%;
+	}
+    input{
+    display: block;
+    margin: 0 auto;
+    margin-top: 2%;
+    outline: none;
+    border-radius: 25px;
+    height: 40px;
+    border: none;
+}
+.auser{
+width: 260px;
+margin: 0 auto;  
+}
+#pav{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+#avatarDive{
+	position: relative;
+	height: 60px;
+	width: 60px;
+	margin: 50px auto;
+	border-radius: 50%;
+	overflow: hidden;
+}
+	#fotoupe{
+    height: 100%;
+		width: 100%;
+	}
+	#selectimge{
+		position: absolute;
+		top: 0; left: 0;
+		height: 100%;
+		width: 100%;
+	}
+    #editb{
+    display: block;
+    margin: 0 auto;
+    margin-top: 2%;
+    outline: none;
+    border-radius: 25px;
+    height: 40px;
+    border: none;
+    background-color: red;
+    color: white;
+}
+#profileinfo{
+    width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    color: white;
+}
+#profileinfo img{
+ width: 80px;
+ height: 80px;
+ border-radius: 50%;
+ display: block;
+ margin: 0 auto;
+}
+#profileinfo p{
+    text-align: center;
+}
+#outradiv{
+    position: relative;
+  top: 30%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+#infocloser{
+  top: 30px;
+  right: 50px;
+  font-size: 26px;
+  margin-left: 50px;
+  cursor:pointer;
+  color: white;
+  position: absolute;
+    }
+</style>
+<body>
+    <div id="error"></div>
+  <div id="lateral-bar">
+    <span id="menucloser" onclick="hidemenu()">&#10006;</span>
+    <p  onclick="changepage('main')">Menu inicial</p>
+    <p onclick="changepage('users')">Usuários</p>
+    <p onclick="changepage('perfil')">Perfil</p>
+    <p onclick="logout()">Sair</p>
+  </div>
+<div id="header">
+    <span id="menuopener" onclick="showmenu()">&#9776;</span>
+  <div id="user">
+   <span onclick="logout()"><%-username%></span>
+   <img src=<%-avatar%> alt="">
+  </div>
+</div>
+
+
+
+<div id="main">
+    <p class="title">Dados coletados</p>
+    <div id="graphs">
+        <div id="acessos">
+    <p><%-total%> <br> acessos</p>
+    </div>
+          <div id="divp">
+        <canvas id="pais" ></canvas>
+    </div> 
+    <div id="divc">
+        <canvas id="cidade" ></canvas>
+       </div>
+       <div id="dive">
+        <canvas id="estado" ></canvas>
+    </div>
+      </div>
+    
+      <div id="graphs2">
+        <div id="acessosp">
+    <p><%-homepage%><br> Acessos ao portifólio</p>
+    </div>
+          <div id="divs">
+        <canvas id="so" ></canvas>
+    </div> 
+    <div id="divtp">
+        <canvas id="tipo" ></canvas>
+       </div>
+       <div id="divl">
+        <canvas id="lang" ></canvas>
+    </div>
+      </div>
+    
+      <div id="graphs3">
+        <div id="retencao">
+    <p><%-interactions%>/<%-homepage%><br> contatos</p>
+    </div>
+          <div id="divv">
+        <canvas id="vpn" ></canvas>
+    </div> 
+    <div id="divct">
+        <canvas id="ctype" ></canvas>
+       </div>
+       <div id="divh">
+        <canvas id="hosting"></canvas>
+      </div>
+    </div>
+</div>
+
+<div id="users" style="display:none;">
+    <div id="users" >
+        <p class="title">Gerência de usuários</p>
+        <div id="ausers" style="color: white; font-size:18px; text-align:center; margin-top:3%">
+        <p>Usuários autorizados</p>
+        <div id="usersList">
+         <div class="auser">
+          </div>
+       </div>
+        </div>
+        </div>
+</div>
+<div id="profile" style="display: none;">
+    <img src="<%-avatar%>" id="pav" > 
+    <p style="text-align: center; font-size:20px; color:white;"><%-username%></p>
+    <p style="text-align: center; font-size:15px; color:white;"><%-hemail%></p>
+    <p style="text-align: center; color:white; font-size: 17px;" ><%-roles%></p>
+    <button style="display:block; margin: 0 auto; background-color: red; margin-top: 1%; border: none; color: white;" onclick="changepage('editp')">Editar</button>
+</div>
+
+
+<div style="display: none;" id="edit">
+    <p class="title">Editar perfil</p>
+    <form action="/edit" method="post" id="editform" enctype="multipart/form-data">
+        <div id="avatarDive">
+            <img src="<%-avatar%>" id="fotoupe" />
+            <div id="selectimg" onclick="selecaoe()">
+            </div>
+            <input class="file-upload" type="file" name="avatar" id="fotoe" oninput="enviadoe(this)" accept="image/*"/>
+        </div>
+    <input type="text" name="username" placeholder="Nome de usuário" value="<%-username%>" id="usernamee" style="background-color: transparent; border-bottom: 1px solid white; border-radius: 0px; color: white;">
+    <input type="email" name="email" placeholder="Email" id="emaile" value="<%-email%>" style="background-color: transparent; border-bottom: 1px solid white; border-radius: 0px; color: white;">
+    <input type="text" name="id" value="<%-id%>" style="display: none;">
+    <input type="text" name="token" value="<%-securityToken%>" style="display: none;">
+    <button type="button" id="editb" style="display:block; margin: 0 auto; margin-top: 1em; " onclick="edit()">Salvar</button>
+</form>
+</div>
+
+<div id="profileinfo" style="display: none;">
+    <span id="infocloser" onclick="closeinfo()">&#10006;</span>
+    <div id="outradiv">
+<img src="https://ykolonqgapzhtetlnnkg.supabase.co/storage/v1/object/public/avatars/1.png" id="iimg">
+<p style="font-size:20px;" id="isnm"></p>
+<p style="font-size: 17px;" id="irls"></p>
+<p style="font-size: 14px;">Último login em</p>
+<p id="ils"></p>
+</div>
+</div>
+
+  <div id="footer"></div>
+</body>
+<script>
+    var myToken = ["<%-securityToken%>"];
+    var username = ["<%-username%>"]
+    var id = ["<%-id%>"]
+    var useravatar = ["<%-avatar%>"]
+    var usernames = <%-usernames%>;
+    var userimages = <%-userimages%>;
+    var userlastseens = <%-lss%>;
+    var amountCountry = <%-countryTotal%>;
+    var listCountry = <%-countryNames%>;
+    var amountState = <%-stateTotal%>;
+    var listState = <%-stateNames%>;
+    var amountcity = <%-cityTotal%>;
+    var listcity = <%-cityNames%>;
+    var amountos = <%-osTotal%>;
+    var listos = <%-osNames%>;
+    var amountlang = <%-langTotal%>;
+    var listlang = <%-langNames%>;
+    var amounttype = <%-typeTotal%>;
+    var listtype = <%-typeNames%>;
+    var usersrole = <%-usersRole%>;
+    var listvpn = <%-vpnusers%>;
+    var amountvpn = <%-vpntotal%>;
+    var listcons= <%-connections%>;
+    var amountcons = <%-connectionstotal%>;
+    var listhost = <%-hosttotal%>;
+    var amounthost = <%-host%>;
+    var vpndata = [];
+    var consdata = [];
+    var hostdata = [];
+    var countryData = []
+    var stateData = []
+    var cityData = []
+    var osData = []
+    var langData = []
+    var typeData = []
+    var colors = [
+    "#63b598", "#ce7d78", "#ea9e70", "#a48a9e", "#c6e1e8", "#648177", "#0d5ac1",
+    "#f205e6", "#1c0365", "#14a9ad", "#4ca2f9", "#a4e43f", "#d298e2", "#6119d0",
+    "#d2737d", "#c0a43c", "#f2510e", "#651be6", "#79806e", "#61da5e", "#cd2f00",
+    "#9348af", "#01ac53", "#c5a4fb", "#996635", "#b11573", "#4bb473", "#75d89e",
+    "#2f3f94", "#2f7b99", "#da967d", "#34891f", "#b0d87b", "#ca4751", "#7e50a8",
+    "#c4d647", "#e0eeb8", "#11dec1", "#289812", "#566ca0", "#ffdbe1", "#2f1179",
+    "#935b6d", "#916988", "#513d98", "#aead3a", "#9e6d71", "#4b5bdc", "#0cd36d",
+    "#250662", "#cb5bea", "#228916", "#ac3e1b", "#df514a", "#539397", "#880977",
+    "#f697c1", "#ba96ce", "#679c9d", "#c6c42c", "#5d2c52", "#48b41b", "#e1cf3b",
+    "#5be4f0", "#57c4d8", "#a4d17a", "#be608b", "#96b00c", "#088baf", "#f158bf",
+    "#e145ba", "#ee91e3", "#05d371", "#5426e0", "#4834d0", "#802234", "#6749e8",
+    "#0971f0", "#8fb413", "#b2b4f0", "#c3c89d", "#c9a941", "#41d158", "#fb21a3",
+    "#51aed9", "#5bb32d", "#21538e", "#89d534", "#d36647", "#7fb411", "#0023b8",
+    "#3b8c2a", "#986b53", "#f50422", "#983f7a", "#ea24a3", "#79352c", "#521250",
+    "#c79ed2", "#d6dd92", "#e33e52", "#b2be57", "#fa06ec", "#1bb699", "#6b2e5f",
+    "#64820f", "#21538e", "#89d534", "#d36647", "#7fb411", "#0023b8", "#3b8c2a",
+    "#986b53", "#f50422", "#983f7a", "#ea24a3", "#79352c", "#521250", "#c79ed2",
+    "#d6dd92", "#e33e52", "#b2be57", "#fa06ec", "#1bb699", "#6b2e5f", "#64820f",
+    "#9cb64a", "#996c48", "#9ab9b7", "#06e052", "#e3a481", "#0eb621", "#fc458e",
+    "#b2db15", "#aa226d", "#792ed8", "#73872a", "#520d3a", "#cefcb8", "#a5b3d9",
+    "#7d1d85", "#c4fd57", "#f1ae16", "#8fe22a", "#ef6e3c", "#243eeb", "#dd93fd",
+    "#3f8473", "#e7dbce", "#421f79", "#7a3d93", "#635f6d", "#93f2d7", "#9b5c2a",
+    "#15b9ee", "#0f5997", "#409188", "#911e20", "#1350ce", "#10e5b1", "#fff4d7",
+    "#cb2582", "#ce00be", "#32d5d6", "#608572", "#c79bc2", "#00f87c", "#77772a",
+    "#6995ba", "#fc6b57", "#f07815", "#8fd883", "#060e27", "#96e591", "#21d52e",
+    "#d00043", "#b47162", "#1ec227", "#4f0f6f", "#1d1d58", "#947002", "#bde052",
+    "#e08c56", "#28fcfd", "#36486a", "#d02e29", "#1ae6db", "#3e464c", "#a84a8f",
+    "#911e7e", "#3f16d9", "#0f525f", "#ac7c0a", "#b4c086", "#c9d730", "#30cc49",
+    "#3d6751", "#fb4c03", "#640fc1", "#62c03e", "#d3493a", "#88aa0b", "#406df9",
+    "#615af0", "#2a3434", "#4a543f", "#79bca0", "#a8b8d4", "#00efd4", "#7ad236",
+    "#7260d8", "#1deaa7", "#06f43a", "#823c59", "#e3d94c", "#dc1c06", "#f53b2a",
+    "#b46238", "#2dfff6", "#a82b89", "#1a8011", "#436a9f", "#1a806a", "#4cf09d",
+    "#c188a2", "#67eb4b", "#b308d3", "#fc7e41", "#af3101", "#71b1f4", "#a2f8a5",
+    "#e23dd0", "#d3486d", "#00f7f9", "#474893", "#3cec35", "#1c65cb", "#5d1d0c",
+    "#2d7d2a", "#ff3420", "#5cdd87", "#a259a4", "#e4ac44", "#1bede6", "#8798a4",
+    "#d7790f", "#b2c24f", "#de73c2", "#d70a9c", "#88e9b8", "#c2b0e2", "#86e98f",
+    "#ae90e2", "#1a806b", "#436a9e", "#0ec0ff", "#f812b3", "#b17fc9", "#8d6c2f",
+    "#d3277a", "#2ca1ae", "#9685eb", "#8a96c6", "#dba2e6", "#76fc1b", "#608fa4",
+    "#20f6ba", "#07d7f6", "#dce77a", "#77ecca"
+    ]
+    for(var i = 0; i < listCountry.length; i++){
+    countryData.push(amountCountry[listCountry[i]])
+    }
+    for(var i = 0; i < listState.length; i++){
+    stateData.push(amountState[listState[i]])
+    }
+    for(var i = 0; i < listcity.length; i++){
+   cityData.push(amountcity[listcity[i]])
+    }
+    for(var i = 0; i < listos.length; i++){
+     osData.push(amountos[listos[i]])
+    }
+    for(var i = 0; i < listlang.length; i++){
+     langData.push(amountlang[listlang[i]])
+    }
+    for(var i = 0; i < listtype.length; i++){
+     typeData.push(amounttype[listtype[i]])
+    }
+    for(var i = 0; i < listvpn.length; i++){
+     vpndata.push(amountvpn[listvpn[i]])
+    }
+    for(var i = 0; i < listcons.length; i++){
+     consdata.push(amountcons[listcons[i]])
+    }
+    for(var i = 0; i <listhost.length; i++){
+     hostdata.push(amounthost[listhost[i]])
+    }
+    for(var i = 0; i < usernames.length; i++){
+        if(usernames[i] != " "){
+    var element = document.createElement("div");
+    var par = document.createElement("p");
+    par.innerText = usernames[i]
+    par.title = "Último login em " + userlastseens[i]
+    var img = document.createElement("img")
+    img.src = userimages[i] + "?" + new Date().getTime();
+    img.title = usernames[i]
+    par.setAttribute("onclick","userInfo(" + (parseInt(i)) + ")");
+    par.setAttribute("id", "user" + (parseInt(i)));
+    element.appendChild(img);
+    element.appendChild(par);
+    element.classList.add("auser")
+    document.getElementById('usersList').appendChild(element);
+    }
+}
+    const pais = document.getElementById('pais').getContext('2d');
+    const so = document.getElementById('so').getContext('2d');
+    const lang = document.getElementById('lang').getContext('2d');
+    const city = document.getElementById('cidade').getContext('2d');
+    const state = document.getElementById('estado').getContext('2d');
+    const dtype = document.getElementById('tipo').getContext('2d');
+
+
+    const p = new Chart(pais, {
+    type: 'doughnut',
+    data: {
+        labels: listCountry,
+        datasets: [{
+            label: 'Países',
+            data: countryData,
+            backgroundColor: colors,
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Países',
+                color: "white"
+            },
+            legend: {
+               display: false
+                     }
+        }
+    }
+});
+
+const s = new Chart(so, {
+    type: 'doughnut',
+    data: {
+        labels: listos,
+        datasets: [{
+            label: 'OS',
+            data: osData,
+            backgroundColor: colors,
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Sistema Operacional',
+                color: "white"
+            }, 
+             legend: {
+               display: false
+                     }
+        }
+    }
+});
+
+const l = new Chart(lang, {
+    type: 'doughnut',
+    data: {
+        labels: listlang,
+        datasets: [{
+            label: 'top languages',
+            data: langData,
+            backgroundColor: colors,
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Idiomas',
+                color: "white"
+            }, 
+             legend: {
+               display: false
+                     }
+        }
+    }
+});
+
+
+const dt = new Chart(dtype, {
+    type: 'doughnut',
+    data: {
+        labels: listtype,
+        datasets: [{
+            label: 'type',
+            data: typeData,
+            backgroundColor: colors,
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Tipo de dispositivo',
+                color: "white"
+            }, 
+             legend: {
+               display: false
+                     }
+        }
+    }
+});
+
+const ci = new Chart(city, {
+    type: 'doughnut',
+    data: {
+        labels: listcity,
+        datasets: [{
+            label: 'City',
+            data: cityData,
+            backgroundColor: colors,
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Cidades',
+                color: "white"
+            }, 
+             legend: {
+               display: false
+                     }
+        }
+    }
+});
+
+const e = new Chart(state, {
+    type: 'doughnut',
+    data: {
+        labels: listState,
+        datasets: [{
+            label: 'Estados',
+            data: stateData,
+            backgroundColor: colors,
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Estados',
+                color: "white"
+            }, 
+             legend: {
+               display: false
+                     }
+        }
+    }
+});
+
+const vp = new Chart(vpn, {
+    type: 'doughnut',
+    data: {
+        labels: listvpn,
+        datasets: [{
+            label: 'Connection Type',
+            data: vpndata,
+            backgroundColor: ["#63b598", "#ce7d78"],
+            borderColor: ["#63b598", "#ce7d78"],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'VPN',
+                color: "white"
+            }, 
+             legend: {
+               display: false
+                     }
+        }
+    }
+});
+
+const conexao = new Chart(ctype, {
+    type: 'doughnut',
+    data: {
+        labels: listcons,
+        datasets: [{
+            label: 'ctype',
+            data: consdata,
+            backgroundColor: colors,
+            borderColor: colors,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Tipo de conexão',
+                color: "white"
+            }, 
+             legend: {
+               display: false
+                     }
+        }
+    }
+});
+const h = new Chart(hosting, {
+    type: 'doughnut',
+    data: {
+        labels: listhost,
+        datasets: [{
+            label: 'hosting',
+            data: hostdata,
+            backgroundColor: ["#63b598", "#ce7d78"],
+            borderColor: ["#63b598", "#ce7d78"],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Hosting',
+                color: "white"
+            }, 
+             legend: {
+               display: false
+                     }
+        }
+    }
+});
+
+function showmenu() {
+  document.getElementById("lateral-bar").style.width = "250px";
+}
+function hidemenu() {
+  document.getElementById("lateral-bar").style.width = "0";
+}
+
+function logout(){
+var logout = window.confirm("Tem certeza que deseja deslogar?")
+if(logout){
+    location.replace("/");
+}
+}
+
+function userInfo(target){
+var infodiv = document.getElementById("outradiv");
+document.getElementById("iimg").src = userimages[target]
+document.getElementById("isnm").innerText = usernames[target]
+document.getElementById("irls").innerText = usersrole[target]
+document.getElementById("ils").innerText = userlastseens[target]
+document.getElementById("profileinfo").style.display = "block"
+}
+function closeinfo(){
+    document.getElementById("profileinfo").style.display = "none"
+    document.getElementById("iimg").src = ""
+document.getElementById("isnm").innerText = ""
+document.getElementById("irls").innerText = ""
+document.getElementById("ils").innerText = ""
+}
+function changepage(target){
+    document.getElementById("lateral-bar").style.width = "0";
+if(target == "main"){
+    document.getElementById("users").style.display = "none";
+    document.getElementById("profile").style.display = "none";
+    document.getElementById("edit").style.display = "none";
+    document.getElementById("main").style.display = "block";
+}else if(target == "users"){
+    document.getElementById("main").style.display = "none";
+    document.getElementById("profile").style.display = "none";
+    document.getElementById("edit").style.display = "none";
+    document.getElementById("users").style.display = "block";
+}else if(target == "perfil"){
+    document.getElementById("main").style.display = "none";
+    document.getElementById("users").style.display = "none";
+    document.getElementById("edit").style.display = "none";
+    document.getElementById("profile").style.display = "block";
+}else if(target == "editp"){
+    document.getElementById("main").style.display = "none";
+    document.getElementById("users").style.display = "none";
+    document.getElementById("profile").style.display = "none";
+    document.getElementById("edit").style.display = "block";
+}
+}
+
+
+        function selecaoe() {
+document.getElementById("fotoe").click();
+}
+        var enviadoe = function (info) {
+            src = URL.createObjectURL(event.target.files[0]);
+          var image = document.getElementById("fotoupe").src = src;
+          upload = URL.createObjectURL(document.getElementById('fotoe').files[0]);
+          img = upload
+        };
+
+        function edit(){
+let mail = document.getElementById("emaile").value
+let username = document.getElementById("usernamee").value
+
+if(username){
+
+    if(mail){
+     document.getElementById("editform").submit();
+    }else{
+        document.getElementById("error").innerText = "Email inválido!";
+    document.getElementById("error").style.display = "block";
+        setTimeout(()=>{
+            document.getElementById("error").style.display = "none";
+        }, 3000)
+}
+}  else{
+    document.getElementById("error").innerText = "Nome de usuário inválido!";
+    document.getElementById("error").style.display = "block";
+        setTimeout(()=>{
+            document.getElementById("error").style.display = "none";
+        }, 3000)
+}
+  }
+</script>
+</html> 

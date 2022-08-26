@@ -1,0 +1,31 @@
+{
+  "name": "analytics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "decaffeinatedcoffee",
+  "license": "ISC",
+  "dependencies": {
+    "@keyv/mongo": "^2.1.6",
+    "@supabase/supabase-js": "^1.35.3",
+    "body-parser": "^1.19.1",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "image-to-base64": "^2.2.0",
+    "keyv": "^4.2.8",
+    "multer": "^1.4.4",
+    "node-fetch": "2.6.7",
+    "nodemailer": "^6.7.5",
+    "process": "^0.11.10",
+    "serve-index": "^1.9.1"
+  }
+}

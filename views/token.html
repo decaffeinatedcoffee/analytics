@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="theme-color" content="#292a2d" >
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap" rel="stylesheet">
+    <title >Erro</title>
+</head>
+<body style="background-color: #191919;">
+    <p id="err" style="text-align: center; color:white; font-size: 20px; font-family: 'Montserrat', sans-serif;"></p>
+</body>
+<script>
+setTimeout(()=> document.getElementById("err").innerText = "Token inválido, você será redirecionado a tela de login em 5 segundos", 1000);
+setTimeout(()=> document.getElementById("err").innerText = "Token inválido, você será redirecionado a tela de login em 4 segundos", 2000);
+setTimeout(()=> document.getElementById("err").innerText = "Token inválido, você será redirecionado a tela de login em 3 segundos", 3000);
+setTimeout(()=> document.getElementById("err").innerText = "Token inválido, você será redirecionado a tela de login em 2 segundos", 4000);
+setTimeout(()=> document.getElementById("err").innerText = "Token inválido, você será redirecionado a tela de login em 1 segundos", 5000);
+setTimeout(()=> location.replace("/"), 6000);
+</script>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#292a2d" >
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Dashboard Login</title>
+</head>
+<style>
+    body{
+        background-color: #191919;
+        padding: none;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    }
+    #login{
+        background-color: #242424;
+        width: 350px;
+        height: 400px;
+        position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    }
+    #login input{
+        display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+    outline: none;
+    border-radius: 25px;
+    height: 40px;
+    border: none;
+    width: 250px;
+    }
+    #login button{
+        display: block;
+    margin: 0 auto;
+    margin-top: 2%;
+    outline: none;
+    border-radius: 25px;
+    height: 40px;
+    border: none;
+    width: 100px;
+    }
+    #login button:hover{
+        background-color: rgb(160, 160, 160);
+    }
+    </style>
+<body>
+    <div id="login">
+        <p style="text-align: center; color:white; font-size:20px;">Login</p>
+        <p style="text-align: center; color:rgb(255, 0, 0); font-size:17px;"><%-error%></p>
+        <form action="/" method="post">
+    <input type="email" name="email" placeholder="Email" style="margin-top:25%;">
+    <input type="password" name="pass" placeholder="Senha">
+    <button type="submit">Login</button>
+    <a href="/recovery" style="color: white; display:block; text-align:center; margin-top:4%;">Esqueceu a senha?</a>
+    </form>
+    </div>
+</body>
+<script>
+    fetch("http://ip-api.com/json/?lang=pt-BR&fields=status,message,countryCode,regionName,city,district,isp,org,as,mobile,proxy,hosting")
+ .then(function (ipinfo) {
+   return ipinfo.json();
+ })
+ .then(function (ipdata) {
+console.log(ipdata);
+ })
+</script>
+</html>

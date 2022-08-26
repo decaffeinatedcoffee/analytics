@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="theme-color" content="#292a2d" >
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Recuperação de senha</title>
+</head>
+<style>
+    body{
+        background-color: #191919;
+        padding: none;
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+    }
+    #change{
+        background-color: #242424;
+        width: 350px;
+        height: 400px;
+        position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+    }
+
+  #change input{
+        display: block;
+    margin: 0 auto;
+    margin-top: 5%;
+    outline: none;
+    border-radius: 25px;
+    height: 40px;
+    border: none;
+    width: 250px;
+    }
+     #change button{
+        display: block;
+    margin: 0 auto;
+    margin-top: 2%;
+    outline: none;
+    border-radius: 25px;
+    height: 40px;
+    border: none;
+    width: 100px;
+    }
+    #change button:hover{
+        background-color: rgb(160, 160, 160);
+    }
+    </style>
+<body>
+    <div id="change">
+        <p style="text-align: center; color:white; font-size:20px;">Alterar senha</p>
+        <p style="text-align: center; color:rgb(255, 0, 0); font-size:17px;"><%-error%></p>
+        <form action="/recoveryc" method="post">
+    <input type="password" name="pass" placeholder="Nova senha" style="margin-top:25%;">
+    <input type="password" name="cpass" placeholder="Confirmar senha">
+    <button type="submit">Alterar</button>
+    </form>
+    </div>
+</body>
+</html>
