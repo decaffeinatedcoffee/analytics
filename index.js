@@ -460,8 +460,7 @@ var imagename;
     })
 
   app.post("/analytics", function(req, res){
-    var userIP = req.ip
-     console.log(userIP)
+    var userIP = req.ip;
     fetch("http://ip-api.com/json/" + userIP + "?lang=pt-BR&fields=status,message,country,regionName,city,district,isp,org,as,mobile,proxy,hosting")
  .then(function (ipinfo) {
    return ipinfo.json();
