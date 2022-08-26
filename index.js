@@ -11,6 +11,7 @@ var nodemailer = require("nodemailer");
 require('dotenv').config();
 app.set("view engine", "ejs");
 app.use(express.json());
+app.set('trust proxy', true)
 app.use(cors()); 
 app.use( bodyParser.json() );       
 app.use(bodyParser.urlencoded({    
@@ -459,7 +460,7 @@ var imagename;
     })
 
   app.post("/analytics", function(req, res){
-    var userIP = (req.headers['x-forwarded-for'] || '').split(',').pop().trim() || req.socket.remoteAddress;
+    var userIP = req.ip
      console.log(userIP)
     fetch("http://ip-api.com/json/" + userIP + "?lang=pt-BR&fields=status,message,country,regionName,city,district,isp,org,as,mobile,proxy,hosting")
  .then(function (ipinfo) {
