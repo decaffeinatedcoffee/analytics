@@ -27,7 +27,7 @@ const server = http.createServer(app);
 const fetch = require('node-fetch');
 const Keyv = require('keyv');
 const { json, contentType } = require('express/lib/response');
-const supabase = createClient('https://ykolonqgapzhtetlnnkg.supabase.co', process.env.SUPABASE);
+const supabase = createClient(process.env.SUPABASEURL, process.env.SUPABASE);
 const keyv = new Keyv(process.env.MONGODB);
 keyv.on('error', err => console.error('Keyv connection error:', err));
 var compareToken;
@@ -324,7 +324,7 @@ app.post('/edit', upload.single('avatar'), function (req, res) {
      upsert: false
    })
    })
-     var userimgurl = "https://ykolonqgapzhtetlnnkg.supabase.co/storage/v1/object/public/avatars/" + id + "." + ext;
+     var userimgurl = process.env.SUPABASEURL + "/storage/v1/object/public/avatars/" + id + "." + ext;
      userimgurl = CryptoJS.AES.encrypt(userimgurl, process.env.SALT).toString();
      imagename = CryptoJS.AES.encrypt(imagename, process.env.SALT).toString();
  }else{
@@ -400,10 +400,10 @@ var imagename;
     upsert: false
   })
  })
-    var userimgurl = "https://ykolonqgapzhtetlnnkg.supabase.co/storage/v1/object/public/avatars/" + id + "." + ext;
+    var userimgurl = process.env.SUPABASEURL + "/storage/v1/object/public/avatars/" + id + "." + ext;
 }else{
   var imagename = " ";
-  var userimgurl = "https://ykolonqgapzhtetlnnkg.supabase.co/storage/v1/object/public/avatars/noimage.png"
+  var userimgurl = process.env.SUPABASEURL + "/storage/v1/object/public/avatars/noimage.png"
 }
     var pass = req.body.pass
     var token = req.body.tokencadastro
