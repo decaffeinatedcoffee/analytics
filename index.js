@@ -196,7 +196,7 @@ let logged = false;
                   types.push(CryptoJS.AES.decrypt(alldata.deviceType, logsalt).toString(CryptoJS.enc.Utf8));
                 }
                 if(alldata.date){
-                  dates.push(CryptoJS.AES.decrypt(alldata.date, logsalt).toString(CryptoJS.enc.Utf8));
+                  dates.push(alldata.date.toString());
                 }
                 if(alldata.time){
                   times.push(CryptoJS.AES.decrypt(alldata.time, logsalt).toString(CryptoJS.enc.Utf8));
@@ -479,7 +479,19 @@ var imagename;
     let base = new Date().toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
     let d = new Date(base)
     var dateString = d.getDate() + "/" + (d.getMonth()+1) + "/" + d.getFullYear();
-    var timeString = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    let hh = d.getHours()
+    let mm = d.getMinutes()
+    let ss = d.getSeconds()
+    if(hh < 10){
+    hh = "0" + hh;
+    }
+    if(mm < 10){
+    mm = "0" + mm;
+    }
+    if(ss < 10){
+    ss = "0" + ss;
+    }
+    var timeString = hh + ":" + mm + ":" + ss;
 city = city.replace(/[&\/\\#,+(`)$~%.'":;*?<>{}]/g, '');
 region = region.replace(/[&\/\\#,+(`)$~%.'":;*?<>{}]/g, '');
 country = country.replace(/[&\/\\#,+(`)$~%.'":;*?<>{}]/g, '');
@@ -564,8 +576,7 @@ let logsalt = process.env.LOGSALT;
     if(host){
       host = CryptoJS.AES.encrypt(host, logsalt).toString();
     }
-   
-
+ 
     keyv.set("AccessCounter", counternow + 1);
   let formatedData = {"city" : city, "state" : region, "country" : country, "deviceType" : dtype, "so" : so, "lang" : language, "time" : timeString, "date" : dateString, "page": page, "VPN": vpn, "mobile": mobile, "host": host}
      keyv.set((parseInt(counternow) + 1), JSON.stringify(formatedData));
