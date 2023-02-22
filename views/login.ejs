@@ -64,13 +64,4 @@
     </form>
     </div>
 </body>
-<script>
-    fetch("http://ip-api.com/json/?lang=pt-BR&fields=status,message,countryCode,regionName,city,district,isp,org,as,mobile,proxy,hosting")
- .then(function (ipinfo) {
-   return ipinfo.json();
- })
- .then(function (ipdata) {
-console.log(ipdata);
- })
-</script>
 </html>
